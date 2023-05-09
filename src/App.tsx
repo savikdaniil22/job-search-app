@@ -1,26 +1,21 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { MantineProvider, Text } from "@mantine/core";
+import { HeaderResponsive } from "./components/HeaderResponsive/HeaderResponsive";
+import { Filter } from "./components/Filter/Filter";
 
-function App() {
+export default function App() {
+  const props = {
+    links: [
+      { link: "head", label: "Поиск вакансий", className: "buttonJobSearch" },
+      { link: "head", label: "Избранное", className: "buttonFavorites" },
+    ],
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MantineProvider theme={{ colorScheme: "light" }}>
+        <HeaderResponsive {...props} />
+        <Filter />
+      </MantineProvider>
     </div>
   );
 }
-
-export default App;
