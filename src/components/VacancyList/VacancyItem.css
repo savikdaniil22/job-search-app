@@ -1,0 +1,78 @@
+.vacancy {
+  display: flex;
+  flex-direction: column;
+  max-width: 773px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
+}
+
+.vacancy__header-link {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #5e96fc;
+}
+
+.vacancy__header-link:hover,
+.vacancy__header-star:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.vacancy__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vacancy__info {
+  display: flex;
+}
+
+.vacancy__salary {
+  font-family: "Inter";
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.vacancy__delimiter {
+  font-family: "Poppins";
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 20px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #7b7c88;
+}
+
+.vacancy__description {
+  font-family: "Inter";
+  line-height: 20px;
+}
+
+.vacancy__location {
+  display: flex;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 20px;
+}
+
+.vacancy__location-icon {
+  width: 20px;
+  height: 20px;
+  line-height: 19px;
+}
+
+.vacancy__location-city {
+  font-family: "Inter";
+  font-size: 16px;
+  line-height: 19px;
+  color: #232134;
+}

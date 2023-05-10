@@ -1,21 +1,21 @@
-import { MantineProvider, Text } from "@mantine/core";
 import { HeaderResponsive } from "./components/HeaderResponsive/HeaderResponsive";
-import { Filter } from "./components/Filter/Filter";
+import { VacancySearch } from "./components/VacancySearch/VacancySearch";
+import "./App.css";
 
 export default function App() {
   const props = {
     links: [
-      { link: "head", label: "Поиск вакансий", className: "buttonJobSearch" },
-      { link: "head", label: "Избранное", className: "buttonFavorites" },
+      { link: "head", label: "Поиск вакансий", className: "head__button" },
+      { link: "head", label: "Избранное", className: "head__button" },
     ],
   };
 
   return (
-    <div>
-      <MantineProvider theme={{ colorScheme: "light" }}>
-        <HeaderResponsive {...props} />
-        <Filter />
-      </MantineProvider>
+    <div className="app">
+      <HeaderResponsive {...props} />
+      <div className="main">
+        <VacancySearch />
+      </div>
     </div>
   );
 }

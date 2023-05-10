@@ -1,0 +1,26 @@
+.vacancyList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 28px;
+}
+
+.vacancyList__search {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 12px;
+  gap: 10px;
+  max-width: 773px;
+  width: auto;
+  height: 48px;
+  background: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 8px;
+}
+
+.vacancyList__main {
+  display: flex;
+  width: 100%;
+}

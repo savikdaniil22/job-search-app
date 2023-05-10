@@ -1,17 +1,14 @@
 .filter {
   display: flex;
-  box-sizing: border-box;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
   padding: 20px;
-  gap: 10px;
+  margin: 0 28px;
   width: 315px;
   height: 360px;
-  left: 162px;
-  top: 124px;
+  gap: 10px;
   background: #ffffff;
   border: 1px solid #eaebed;
-  position: absolute;
   border-radius: 12px;
 }
 
@@ -19,53 +16,50 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 15px;
 }
 
 .filter__header button {
   display: flex;
   flex-direction: row;
+  align-items: center;
   border: 0;
   background: none;
   font-size: 14px;
   line-height: 20px;
-  align-items: center;
   color: #acadb9;
 }
 
 .filter__header h1 {
   width: 93px;
-  font-family: "Inter";
   font-size: 20px;
   line-height: 20px;
+  margin: 0;
 }
 
-.buttonApply {
+.filter__number,
+.filter__select {
+  display: flex;
+  flex-direction: column;
+  width: 275px;
+  gap: 8px;
+}
+
+.filter__button-apply {
   width: 275px;
   height: 40px;
+  margin-top: 10px;
   background: #5e96fc;
   border-radius: 8px;
   border: none;
-  font-family: "Inter";
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
   color: #ffffff;
 }
 
-.filter__number {
-  display: flex;
-  font-family: "Inter";
-  flex-direction: column;
-  width: 275px;
-  gap: 8px;
-  width: 275px;
-}
-
-.filter__select {
-  width: 275px;
-  font-size: 1rem;
-  font-weight: 500;
-  font-size: 14px;
-  font-family: "Inter";
-  background: #ffffff;
+.filter__button-apply:hover,
+.filter__header button:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
