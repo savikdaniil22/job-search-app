@@ -1,20 +1,22 @@
 import { VacancySearch } from "./components/VacancySearch/VacancySearch";
-import Logo from "/Users/Savik/Paralect/job-search-app/src/logo.svg";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { NotFound } from "./components/NotFound/NotFound";
+import { Layout } from "./Layout/Layout";
+import { VacancyInfo } from "./components/VacancyInfo/VacancyInfo";
+import { VacancyList } from "./components/VacancyList/VacancyList";
 
 export default function App() {
   return (
-    <div className="app">
-      <header>
-        <img src={Logo} className="logo"></img>
-        <div className="header__buttons">
-          <button className="active">Поиск вакансий</button>
-          <button>Избранные</button>
-        </div>
-      </header>
-      <main>
-        <VacancySearch />
-      </main>
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<VacancySearch />} />
+          <Route path="favorites" element={<VacancyList />} />
+          <Route path="vacancy/:vacancyId" element={<VacancyInfo />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

@@ -15,15 +15,19 @@
   margin-bottom: 0;
 }
 
-.vacancy__header-link {
+.vacancy__header .link {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
   color: #5e96fc;
+  text-decoration: none;
+  background-color: transparent;
+  border: 0;
+  padding: 0px;
 }
 
-.vacancy__header-link:hover,
-.vacancy__header-star:hover {
+.vacancy__header .link:hover,
+.vacancy__header .star:hover {
   opacity: 0.7;
   cursor: pointer;
 }
@@ -65,13 +69,13 @@
   height: 20px;
 }
 
-.vacancy__location-icon {
+.vacancy__location .icon {
   width: 20px;
   height: 20px;
   line-height: 19px;
 }
 
-.vacancy__location-city {
+.vacancy__location .city {
   font-size: 16px;
   line-height: 19px;
   color: #232134;

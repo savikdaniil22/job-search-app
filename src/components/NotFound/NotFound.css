@@ -1,0 +1,36 @@
+.notFound {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 327px;
+  height: 366.27px;
+  margin: 80px auto 0px auto;
+}
+
+.notFound h1 {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: 30px;
+  font-weight: 700;
+  font-size: 23px;
+}
+
+.notFound a {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px;
+  width: 164px;
+  height: 42px;
+  background: #deecff;
+  border-radius: 8px;
+  width: 116px;
+  height: 22px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #3b7cd3;
+  text-decoration: none;
+}
