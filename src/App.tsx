@@ -1,26 +1,22 @@
-import React from "react";
-import logo from "./logo.svg";
+import { VacancySearch } from "./components/VacancySearch/VacancySearch";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { NotFound } from "./components/NotFound/NotFound";
+import { Layout } from "./Layout/Layout";
+import { VacancyInfo } from "./components/VacancyInfo/VacancyInfo";
+import { VacancyList } from "./components/VacancyList/VacancyList";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<VacancySearch />} />
+          <Route path="favorites" element={<VacancyList />} />
+          <Route path="vacancy/:vacancyId" element={<VacancyInfo />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
-
-export default App;

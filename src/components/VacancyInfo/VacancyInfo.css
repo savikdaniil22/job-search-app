@@ -1,0 +1,92 @@
+.vacancyInfo {
+  display: flex;
+  flex-direction: column;
+  max-width: 773px;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.vacancyInfo__short {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  max-width: 773px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.vacancyInfo__short__header {
+  display: flex;
+  justify-content: space-between;
+  line-height: 24px;
+}
+
+.vacancyInfo__short__header .name {
+  line-height: 24px;
+  font-weight: 700;
+  font-size: 28px;
+  margin: 0px;
+}
+
+.vacancyInfo__short__description {
+  display: flex;
+}
+
+.vacancyInfo__short__description .salary {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.vacancyInfo__short__description .delimiter {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: "Poppins";
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 20px;
+  line-height: 13px;
+  color: #7b7c88;
+}
+
+.vacancyInfo__short__description .info {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.vacancyInfo__short__location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 20px;
+}
+
+.vacancyInfo__short__location .icon {
+  width: 20px;
+  height: 20px;
+  line-height: 19px;
+}
+
+.vacancyInfo__short__location .city {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.vacancyInfo__description {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  max-width: 773px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
+}

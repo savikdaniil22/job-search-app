@@ -1,0 +1,66 @@
+.vacancyList {
+  display: flex;
+  flex-direction: column;
+  max-width: 773px;
+  width: 100%;
+  margin: 0px auto;
+}
+
+.vacancyList__search {
+  display: flex;
+  align-items: center;
+  padding: 0px 12px;
+  gap: 10px;
+  margin-bottom: 16px;
+  margin-right: 20px;
+  max-width: 773px;
+  width: auto;
+  min-height: 48px;
+  background: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.vacancyList__main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 40px;
+  padding-right: 20px;
+}
+
+.vacancyList__search button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 83px;
+  height: 32px;
+  background: #5e96fc;
+  border-radius: 8px;
+  border: 0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.vacancyList__search input {
+  border: 0;
+  width: 85%;
+}
+
+.vacancyList__search input :active,
+:hover,
+:focus {
+  outline: 0;
+}
+
+.vacancyList__search button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.vacancyList__pagination {
+  margin: auto auto 44px;
+}
