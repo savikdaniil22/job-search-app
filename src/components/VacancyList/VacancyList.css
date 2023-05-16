@@ -29,6 +29,8 @@
   overflow: auto;
   margin-bottom: 40px;
   padding-right: 20px;
+  box-sizing: border-box;
+  padding-right: 20px;
 }
 
 .vacancyList__search button {
