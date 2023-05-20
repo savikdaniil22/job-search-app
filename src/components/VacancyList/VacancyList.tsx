@@ -5,6 +5,7 @@ import { Loader, Pagination } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FormValues } from "../Filter/Filter";
+import { NotFound } from "../NotFound/NotFound";
 
 export interface Vacancies {
   id: number;
@@ -161,6 +162,7 @@ export function VacancyList({ formValues }: VacancyListProps) {
           className="vacancyList__pagination"
         />
       ) : null}
+      {total === 0 && !isLoaded ? <NotFound withoutButton={true} /> : null}
     </div>
   );
 }
