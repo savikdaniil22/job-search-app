@@ -5,8 +5,15 @@ import { NotFound } from "./components/NotFound/NotFound";
 import { Layout } from "./Layout/Layout";
 import { VacancyInfo } from "./components/VacancyInfo/VacancyInfo";
 import { VacancyList } from "./components/VacancyList/VacancyList";
+import { useState } from "react";
+import { Login } from "./components/Login/Login";
 
 export default function App() {
+  const [isLogin, setIsLogin] = useState(false);
+
+  if (!isLogin) {
+    return <Login setIsLogin={setIsLogin} />;
+  }
   return (
     <div>
       <Routes>

@@ -44,7 +44,7 @@ export function VacancyItem({ vacancy }: VacancyItemProps) {
             : vacancy.paymentFrom
             ? `з/п от ${vacancy.paymentFrom} `
             : vacancy.paymentTo
-            ? `з/п до ${vacancy.paymentTo} `
+            ? `з/п ${vacancy.paymentTo} `
             : ""}
           {vacancy.paymentFrom || vacancy.paymentTo ? vacancy.currency : ""}
         </p>

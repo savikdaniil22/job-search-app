@@ -4,6 +4,7 @@ import Search from "../assets/images/Search.svg";
 import { Loader, Pagination } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { FormValues } from "../Filter/Filter";
 
 export interface Vacancies {
   id: number;
@@ -40,25 +41,68 @@ interface VacanciesDto {
   total: number;
 }
 
-export function VacancyList() {
+interface VacancyListProps {
+  formValues?: FormValues;
+}
+
+export function VacancyList({ formValues }: VacancyListProps) {
   const [vacancyList, setVacancyList] = useState<Vacancies[]>([]);
-  const [activePage, setPage] = useState(1);
+  const [activePage, setActivePage] = useState(1);
+  const [total, setTotal] = useState(0);
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [search, setSearch] = useState("");
+  const [updateList, setUpdateList] = useState("");
+
+  function calcTotal(totalPage: number) {
+    const total = Math.ceil(
+      totalPage /
+        ((process.env.REACT_APP_PAGE_COUNT &&
+          +process.env.REACT_APP_PAGE_COUNT) ||
+          10)
+    );
+    //Максимальное количество сущностей, выдаваемых API равно 500.
+    //Это значит, например, при поиске резюме по 10 резюме на страницу, всего можно просмотреть 50 страниц.
+    setTotal(total > 50 ? 50 : total);
+  }
 
   let isFavorites = location.pathname === "/favorites";
 
   useEffect(() => {
     setIsLoaded(true);
-    fetch(`${process.env.REACT_APP_API_URL}/vacancies`, {
-      headers: {
-        "x-secret-key": `${process.env.REACT_APP_SECRET_KEY}`,
-        "x-Api-App-Id": `${process.env.REACT_APP_APP_ID}`,
-      },
-    })
+
+    let formParams = "&published=1";
+    if (formValues?.catalogues) {
+      formParams += `&catalogues=${formValues?.catalogues}`;
+    }
+    if (formValues?.paymentFrom) {
+      formParams += `&payment_from=${formValues?.paymentFrom}`;
+    }
+    if (formValues?.paymentTo) {
+      formParams += `&payment_to=${formValues?.paymentTo}`;
+    }
+
+    let keyword = "";
+    if (updateList) {
+      keyword += `&keyword=${updateList}`;
+    }
+
+    fetch(
+      `${process.env.REACT_APP_API_URL}/vacancies?count=${
+        process.env.REACT_APP_PAGE_COUNT
+      }&page=${activePage - 1}${formParams}${keyword}`,
+      {
+        headers: {
+          "x-secret-key": `${process.env.REACT_APP_SECRET_KEY}`,
+          "x-Api-App-Id": `${process.env.REACT_APP_CLIENT_SECRETE}`,
+          // Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then(
         (result: VacanciesDto) => {
+          calcTotal(result.total);
           const vacancyList: Vacancies[] = result.objects.map(
             (data: VacanciesObjectsDto): Vacancies => {
               return {
@@ -82,15 +126,20 @@ export function VacancyList() {
           Error(error);
         }
       );
-  }, []);
+  }, [activePage, formValues, updateList]);
 
   return (
     <div className="vacancyList">
       {!isFavorites && (
         <div className="vacancyList__search">
           <img src={Search} alt="search" />
-          <input type="text" placeholder="Введите название вакансии" />
-          <button>Поиск</button>
+          <input
+            type="text"
+            placeholder="Введите название вакансии"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+          />
+          <button onClick={() => setUpdateList(search)}>Поиск</button>
         </div>
       )}
       {isLoaded ? (
@@ -104,12 +153,14 @@ export function VacancyList() {
           ))}
         </div>
       )}
-      <Pagination
-        value={activePage}
-        onChange={setPage}
-        total={10}
-        className="vacancyList__pagination"
-      />
+      {total > 1 ? (
+        <Pagination
+          value={activePage}
+          onChange={setActivePage}
+          total={total}
+          className="vacancyList__pagination"
+        />
+      ) : null}
     </div>
   );
 }

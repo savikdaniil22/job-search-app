@@ -23,7 +23,7 @@ export function VacancyInfo() {
     fetch(`${process.env.REACT_APP_API_URL}${location.pathname}`, {
       headers: {
         "x-secret-key": `${process.env.REACT_APP_SECRET_KEY}`,
-        "x-Api-App-Id": `${process.env.REACT_APP_APP_ID}`,
+        "x-Api-App-Id": `${process.env.REACT_APP_CLIENT_SECRETE}`,
       },
     })
       .then((res) => res.json())

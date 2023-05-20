@@ -95,6 +95,12 @@
   border-radius: 12px;
 }
 
+.vacancyInfo__description p {
+  font-weight: 700;
+  font-size: 20px;
+  color: #232134;
+}
+
 .vacancyInfo__footer {
   min-height: 20px;
 }
