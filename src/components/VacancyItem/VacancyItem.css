@@ -24,6 +24,7 @@
   background-color: transparent;
   border: 0;
   padding: 0px;
+  text-align: start;
 }
 
 .vacancy__header .link:hover,

@@ -4,19 +4,19 @@ import { IconChevronDown } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import "./Filter.css";
 
-interface Catalogues {
+export interface Catalogues {
   label: string;
   value: string;
 }
 
 export interface FormValues {
-  catalogues: Catalogues;
+  catalogues: Catalogues | string;
   paymentFrom: string;
   paymentTo: string;
 }
 
-interface FilterProps {
-  setFormValues: (data: FormValues) => void;
+export interface FilterProps {
+  onSetFormValues: React.Dispatch<React.SetStateAction<FormValues | undefined>>;
 }
 
 interface CataloguesDto {
@@ -28,7 +28,7 @@ interface CataloguesDto {
   positions: CataloguesDto[];
 }
 
-export function Filter({ setFormValues }: FilterProps) {
+export function Filter({ onSetFormValues }: FilterProps) {
   const [items, setItems] = useState<Catalogues[]>([]);
 
   const form = useForm<FormValues>({
@@ -66,7 +66,7 @@ export function Filter({ setFormValues }: FilterProps) {
     fetch(`${process.env.REACT_APP_API_URL}/catalogues`, {
       headers: {
         "x-secret-key": `${process.env.REACT_APP_SECRET_KEY}`,
-        "x-Api-App-Id": `${process.env.REACT_APP_APP_ID}`,
+        "x-Api-App-Id": `${process.env.REACT_APP_CLIENT_SECRETE}`,
       },
     })
       .then((res) => res.json())
@@ -81,7 +81,7 @@ export function Filter({ setFormValues }: FilterProps) {
   return (
     <form
       className="filter"
-      onSubmit={form.onSubmit(() => setFormValues(form.values))}
+      onSubmit={form.onSubmit(() => onSetFormValues(form.values))}
     >
       <div className="filter__header">
         <h1>Фильтры</h1>

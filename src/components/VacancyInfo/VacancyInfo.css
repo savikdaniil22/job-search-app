@@ -27,14 +27,18 @@
 }
 
 .vacancyInfo__short__header .name {
-  line-height: 24px;
   font-weight: 700;
   font-size: 28px;
-  margin: 0px;
+  margin: 0;
+  line-height: 34px;
 }
 
 .vacancyInfo__short__description {
   display: flex;
+}
+
+.star {
+  margin-left: 5px;
 }
 
 .vacancyInfo__short__description .salary {
@@ -89,4 +93,14 @@
   background: #ffffff;
   border: 1px solid #eaebed;
   border-radius: 12px;
+}
+
+.vacancyInfo__description p {
+  font-weight: 700;
+  font-size: 20px;
+  color: #232134;
+}
+
+.vacancyInfo__footer {
+  min-height: 20px;
 }

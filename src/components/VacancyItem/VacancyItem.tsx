@@ -4,8 +4,13 @@ import Star from "../assets/images/Star.svg";
 import ShadedStar from "../assets/images/ShadedStar.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Vacancies } from "../VacancyList/VacancyList";
 
-export function VacancyItem() {
+interface VacancyItemProps {
+  vacancy: Vacancies;
+}
+
+export function VacancyItem({ vacancy }: VacancyItemProps) {
   const [isFavorites, setFavorites] = useState(false);
 
   const navigate = useNavigate();
@@ -20,10 +25,10 @@ export function VacancyItem() {
         <button
           className="vacancy__header link"
           onClick={async (event) => {
-            navigate(`/vacancy/1`);
+            navigate(`/vacancies/${vacancy.id}`);
           }}
         >
-          Менеджер-дизайнер
+          {vacancy.profession}
         </button>
         <img
           src={isFavorites ? ShadedStar : Star}
@@ -33,13 +38,22 @@ export function VacancyItem() {
         />
       </div>
       <div className="vacancy__info">
-        <p className="vacancy__salary">з/п от 70000 rub </p>
+        <p className="vacancy__salary">
+          {vacancy.paymentFrom && vacancy.paymentTo
+            ? `з/п ${vacancy.paymentFrom} - ${vacancy.paymentTo} `
+            : vacancy.paymentFrom
+            ? `з/п от ${vacancy.paymentFrom} `
+            : vacancy.paymentTo
+            ? `з/п ${vacancy.paymentTo} `
+            : ""}
+          {vacancy.paymentFrom || vacancy.paymentTo ? vacancy.currency : ""}
+        </p>
         <p className="vacancy__delimiter">•</p>
-        <p className="vacancy__description">Полный рабочий день</p>
+        <p className="vacancy__description">{vacancy.typeOfWorkTitle}</p>
       </div>
       <div className="vacancy__location">
         <img src={Icon} alt="Icon" className="vacancy__location icon" />
-        <p className="vacancy__location .city">Новый Урегной</p>
+        <p className="vacancy__location .city">{vacancy.townTitle}</p>
       </div>
     </div>
   );
