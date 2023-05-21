@@ -8,28 +8,31 @@ interface LoginProps {
 
 export function Login({ setIsLogin }: LoginProps) {
   useEffect(() => {
-    fetch(
-      `${process.env.REACT_APP_API_URL}/oauth2/password?
-      login=${process.env.REACT_APP_LOGIN}&password=${process.env.REACT_APP_PASSWORD}&client_id=${process.env.REACT_APP_CLIENT_ID}&hr=0&client_secret=${process.env.REACT_APP_CLIENT_SECRETE}`,
-      {
-        headers: {
-          "x-secret-key": `${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          localStorage.setItem(
-            "access_token",
-            JSON.stringify(result.access_token)
-          );
-          setIsLogin(true);
-        },
-        (error) => {
-          Error(error);
+    if (!localStorage.getItem("access_token")) {
+      fetch(
+        `${process.env.REACT_APP_API_URL}/oauth2/password?
+        login=${process.env.REACT_APP_LOGIN}&password=${process.env.REACT_APP_PASSWORD}&client_id=${process.env.REACT_APP_CLIENT_ID}&hr=0&client_secret=${process.env.REACT_APP_CLIENT_SECRETE}`,
+        {
+          headers: {
+            "x-secret-key": `${process.env.REACT_APP_SECRET_KEY}`,
+          },
         }
-      );
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if (result.access_token) {
+              localStorage.setItem("access_token", result.access_token);
+            }
+            setIsLogin(true);
+          },
+          (error) => {
+            Error(error);
+          }
+        );
+    } else {
+      setIsLogin(true);
+    }
   }, [setIsLogin]);
 
   return (

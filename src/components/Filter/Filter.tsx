@@ -88,6 +88,7 @@ export function Filter({ onSetFormValues }: FilterProps) {
         <button onClick={() => form.reset()}>Сбросить все</button>
       </div>
       <Select
+        data-elem="industry-select"
         name="catalogues"
         label="Отрасль"
         placeholder="Выберите отрасль"
@@ -105,6 +106,7 @@ export function Filter({ onSetFormValues }: FilterProps) {
         {...form.getInputProps("catalogues")}
       />
       <NumberInput
+        data-elem="salary-from-input"
         name="paymentFrom"
         placeholder="От"
         label="Оклад"
@@ -114,6 +116,7 @@ export function Filter({ onSetFormValues }: FilterProps) {
         {...form.getInputProps("paymentFrom")}
       />
       <NumberInput
+        data-elem="salary-to-input"
         name="paymentTo"
         placeholder="До"
         radius="md"
@@ -121,7 +124,11 @@ export function Filter({ onSetFormValues }: FilterProps) {
         min={0}
         {...form.getInputProps("paymentTo")}
       />
-      <button className="filter__button-apply" type="submit">
+      <button
+        data-elem="search-button"
+        className="filter__button-apply"
+        type="submit"
+      >
         Применить
       </button>
     </form>

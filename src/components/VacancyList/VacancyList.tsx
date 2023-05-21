@@ -3,7 +3,6 @@ import "./VacancyList.css";
 import Search from "../assets/images/Search.svg";
 import { Loader, Pagination } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { FormValues } from "../Filter/Filter";
 import { NotFound } from "../NotFound/NotFound";
 
@@ -50,7 +49,6 @@ export function VacancyList({ formValues }: VacancyListProps) {
   const [vacancyList, setVacancyList] = useState<Vacancies[]>([]);
   const [activePage, setActivePage] = useState(1);
   const [total, setTotal] = useState(0);
-  const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
   const [search, setSearch] = useState("");
   const [updateList, setUpdateList] = useState("");
@@ -66,8 +64,6 @@ export function VacancyList({ formValues }: VacancyListProps) {
     //Это значит, например, при поиске резюме по 10 резюме на страницу, всего можно просмотреть 50 страниц.
     setTotal(total > 50 ? 50 : total);
   }
-
-  let isFavorites = location.pathname === "/favorites";
 
   useEffect(() => {
     setIsLoaded(true);
@@ -131,18 +127,19 @@ export function VacancyList({ formValues }: VacancyListProps) {
 
   return (
     <div className="vacancyList">
-      {!isFavorites && (
-        <div className="vacancyList__search">
-          <img src={Search} alt="search" />
-          <input
-            type="text"
-            placeholder="Введите название вакансии"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-          />
-          <button onClick={() => setUpdateList(search)}>Поиск</button>
-        </div>
-      )}
+      <div className="vacancyList__search">
+        <img src={Search} alt="search" />
+        <input
+          data-elem="search-input"
+          type="text"
+          placeholder="Введите название вакансии"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
+        <button data-elem="search-button" onClick={() => setUpdateList(search)}>
+          Поиск
+        </button>
+      </div>
       {isLoaded ? (
         <div className="loader">
           <Loader size="xl" />
