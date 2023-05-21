@@ -4,9 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import { NotFound } from "./components/NotFound/NotFound";
 import { Layout } from "./Layout/Layout";
 import { VacancyInfo } from "./components/VacancyInfo/VacancyInfo";
-import { VacancyList } from "./components/VacancyList/VacancyList";
 import { useState } from "react";
 import { Login } from "./components/Login/Login";
+import { Favorites } from "./components/Favorites/Favorites";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -19,7 +19,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<VacancySearch />} />
-          <Route path="favorites" element={<VacancyList />} />
+          <Route path="favorites" element={<Favorites />} />
           <Route path="vacancies/:vacancyId" element={<VacancyInfo />} />
           <Route path="*" element={<NotFound />} />
         </Route>

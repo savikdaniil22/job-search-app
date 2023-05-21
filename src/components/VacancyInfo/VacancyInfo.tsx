@@ -6,6 +6,7 @@ import Icon from "../assets/images/Icon.svg";
 import { useLocation } from "react-router-dom";
 import { Vacancies, VacanciesObjectsDto } from "../VacancyList/VacancyList";
 import { Loader } from "@mantine/core";
+import { changeFavorites, isVacancyFavorite } from "../Favorites/Favorites";
 
 export function VacancyInfo() {
   const [vacancyInfo, setVacancyInfo] = useState<Vacancies>();
@@ -14,8 +15,9 @@ export function VacancyInfo() {
 
   const location = useLocation();
 
-  function changeFavorites() {
+  function clickFavorites(vacancyItem: Vacancies): void {
     setFavorites(!isFavorites);
+    changeFavorites(vacancyItem);
   }
 
   useEffect(() => {
@@ -64,9 +66,14 @@ export function VacancyInfo() {
                 {vacancyInfo?.profession}
               </p>
               <img
-                src={isFavorites ? ShadedStar : Star}
+                data-elem={`vacancy-${vacancyInfo?.id}-shortlist-button`}
+                src={
+                  vacancyInfo && isVacancyFavorite(vacancyInfo)
+                    ? ShadedStar
+                    : Star
+                }
                 alt="Star"
-                onClick={changeFavorites}
+                onClick={() => vacancyInfo && clickFavorites(vacancyInfo)}
               />
             </div>
             <div className="vacancyInfo__short__description">

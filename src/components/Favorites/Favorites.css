@@ -1,0 +1,9 @@
+.favorites {
+  display: flex;
+  flex-direction: column;
+  max-width: 773px;
+  width: 100%;
+  margin: 0 auto 40px auto;
+  overflow: auto;
+  padding-right: 20px;
+}

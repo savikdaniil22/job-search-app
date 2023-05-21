@@ -5,22 +5,26 @@ import ShadedStar from "../assets/images/ShadedStar.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Vacancies } from "../VacancyList/VacancyList";
+import { changeFavorites, isVacancyFavorite } from "../Favorites/Favorites";
 
 interface VacancyItemProps {
   vacancy: Vacancies;
+  onClickFavorites?: () => void;
 }
 
-export function VacancyItem({ vacancy }: VacancyItemProps) {
+export function VacancyItem({ vacancy, onClickFavorites }: VacancyItemProps) {
   const [isFavorites, setFavorites] = useState(false);
 
   const navigate = useNavigate();
 
-  function changeFavorites() {
+  function clickFavorites(vacancyItem: Vacancies): void {
     setFavorites(!isFavorites);
+    changeFavorites(vacancyItem);
+    onClickFavorites && onClickFavorites();
   }
 
   return (
-    <div className="vacancy">
+    <div className="vacancy" data-elem={`vacancy-${vacancy.id}`}>
       <div className="vacancy__header">
         <button
           className="vacancy__header link"
@@ -31,10 +35,11 @@ export function VacancyItem({ vacancy }: VacancyItemProps) {
           {vacancy.profession}
         </button>
         <img
-          src={isFavorites ? ShadedStar : Star}
+          data-elem={`vacancy-${vacancy.id}-shortlist-button`}
+          src={isVacancyFavorite(vacancy) ? ShadedStar : Star}
           alt="Star"
           className="vacancy__header star"
-          onClick={changeFavorites}
+          onClick={() => clickFavorites(vacancy)}
         />
       </div>
       <div className="vacancy__info">
