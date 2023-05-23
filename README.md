@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Jobored -- web aplication for startup summer 2023
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can access the project through the following link [Jobored](https://savikdaniil22.github.io/job-search-app/)
+
+If you want to run a project locally, then create a .env file in which there will be variables like .env.exsample.
+
+## .env.example consists of
+- REACT_APP_API_URL : Link to server
+- REACT_APP_SECRET_KEY : Password for the proxy server
+- REACT_APP_LOGIN : Login
+- REACT_APP_CLIENT_ID : Client id
+- REACT_APP_CLIENT_SECRET :  Client secret
+- REACT_APP_HR : Default 0
+- REACT_APP_PAGE_COUNT : Number of items per page
 
 ## Available Scripts
 
@@ -29,6 +40,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run deploy`
+
+Builds the app for production to the gh-pages branch 
+
+See the section about [gh-pages](https://www.npmjs.com/package/gh-pages) for more information.
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
@@ -39,32 +56,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
