@@ -62,7 +62,13 @@ export function VacancyList({ formValues }: VacancyListProps) {
     );
     //Максимальное количество сущностей, выдаваемых API равно 500.
     //Это значит, например, при поиске резюме по 10 резюме на страницу, всего можно просмотреть 50 страниц.
-    setTotal(total > 50 ? 50 : total);
+    let maxTotal = Math.ceil(
+      500 /
+        ((process.env.REACT_APP_PAGE_COUNT &&
+          +process.env.REACT_APP_PAGE_COUNT) ||
+          10)
+    );
+    setTotal(total > maxTotal ? maxTotal : total);
   }
 
   useEffect(() => {
