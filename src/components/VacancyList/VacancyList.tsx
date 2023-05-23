@@ -91,8 +91,8 @@ export function VacancyList({ formValues }: VacancyListProps) {
       {
         headers: {
           "x-secret-key": `${process.env.REACT_APP_SECRET_KEY}`,
-          "x-Api-App-Id": `${process.env.REACT_APP_CLIENT_SECRETE}`,
-          // Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          "x-Api-App-Id": `${process.env.REACT_APP_CLIENT_SECRET}`,
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
       }
     )
