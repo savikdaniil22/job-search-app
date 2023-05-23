@@ -11,19 +11,20 @@ import { Favorites } from "./components/Favorites/Favorites";
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
 
-  if (!isLogin) {
+  if (!isLogin && !localStorage.getItem("access_token")) {
     return <Login setIsLogin={setIsLogin} />;
+  } else {
+    return (
+      <div>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<VacancySearch />} />
+            <Route path="favorites" element={<Favorites />} />
+            <Route path="vacancies/:vacancyId" element={<VacancyInfo />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </div>
+    );
   }
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<VacancySearch />} />
-          <Route path="favorites" element={<Favorites />} />
-          <Route path="vacancies/:vacancyId" element={<VacancyInfo />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </div>
-  );
 }
