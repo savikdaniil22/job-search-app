@@ -1,4 +1,4 @@
-# Jobored -- web aplication for startup summer 2023
+# Jobored - web aplication for startup summer 2023
 
 You can access the project through the following link [Jobored](https://savikdaniil22.github.io/job-search-app/)
 
