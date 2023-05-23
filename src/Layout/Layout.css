@@ -57,3 +57,68 @@ button {
   background-color: transparent;
   border: 0px;
 }
+
+@media (max-width: 830px) {
+  .favorites {
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .vacancySearch {
+    flex-direction: column;
+  }
+
+  .filter {
+    margin: 0 auto 40px auto;
+  }
+
+  .vacancyList {
+    padding-left: 20px;
+    width: auto;
+    height: 100%;
+    margin: 0;
+  }
+
+  .vacancyList__main {
+    overflow: inherit;
+  }
+
+  .logo {
+    width: auto;
+  }
+
+  main .vacancyInfo {
+    margin: 20px;
+  }
+}
+
+@media (max-width: 415px) {
+  .header__links a {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .notFound {
+    width: 280px;
+  }
+
+  .notFound h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 355px) {
+  .header__links a {
+    margin: 0 5px;
+  }
+
+  .filter {
+    margin: 0 20px 40px 20px;
+  }
+
+  .filter__button-apply {
+    width: auto;
+  }
+}
